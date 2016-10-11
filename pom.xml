@@ -2,9 +2,9 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0          http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>org.jfrog.test</groupId>
+    <groupId>com.mphasis.multi</groupId>
     <artifactId>multi</artifactId>
-    <version>2.17-SNAPSHOT</version>
+    <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>Simple Multi Modules Build</name>
 
@@ -69,12 +69,12 @@
                                 <propertiesFile>publish.properties</propertiesFile>
                             </artifactory>
                             <publisher>
-                                <contextUrl>http://localhost:8081/artifactory</contextUrl>
+                                <contextUrl>http://10.10.0.115:8081/artifactory</contextUrl>
                                 <username>${username}</username>
                                 <password>${password}</password>
                                 <excludePatterns>*-tests.jar</excludePatterns>
-                                <repoKey>libs-release-local</repoKey>
-                                <snapshotRepoKey>libs-snapshot-local</snapshotRepoKey>
+                                <repoKey>adoptnext-release-local</repoKey>
+                                <snapshotRepoKey>adoptnext-snapshot-local</snapshotRepoKey>
                             </publisher>
                             <buildInfo>
                                 <buildName>plugin-demo</buildName>
@@ -112,6 +112,31 @@
             </plugin>
         </plugins>
     </build>
+
+   <repositories>
+   	<repository>
+        	<id>central</id>
+        	<url>http://10.10.0.115:8081/artifactory/adoptnext-release-local</url>
+        	<snapshots>
+            		<enabled>false</enabled>
+        	</snapshots>
+    	</repository>
+    	<repository>
+        	<id>snapshots</id>
+        	<url>http://10.10.0.115:8081/artifactory/adoptnext-snapshot-local</url>
+        	<releases>
+            		<enabled>false</enabled>
+        	</releases>
+    	</repository>
+    	<repository>
+        	<id>stage</id>
+        	<url>http://10.10.0.115:8081/artifactory/adoptnext-stage-local</url>
+        	<releases>
+            		<enabled>false</enabled>
+        	</releases>
+   	 </repository>
+   </repositories>
+    <!--
     <repositories>
         <repository>
             <snapshots>
@@ -132,5 +157,6 @@
             <url>http://jcenter.bintray.com</url>
         </pluginRepository>
     </pluginRepositories>
+    -->
 
 </project>
